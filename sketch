@@ -1,0 +1,23 @@
+
+working_dir=$(mktemp -d)
+
+(
+  cd "${working_dir}"
+  wget "https://github.com/Tiger-OperatingSystem/tiger-shell/releases/download/continuous/tiger-shell.deb"
+  dpkg -x "tiger-shell.deb" .
+  rm "tiger-shell.deb"
+
+  mkdir -p /var/tiger-update/
+  date +%y.%m.%d%H%M%S > /var/tiger-update/version
+
+  tar -czvf ../update-pack.tar.gz ./*
+  chmod 777 ../update-pack.tar.gz
+)
+
+mv /tmp/update-pack.tar.gz tiger-update-package.tgz
+
+
+
+    sudo tar --same-permissions --same-owner -xzvf tiger-update-package.tgz -C /
+
+
