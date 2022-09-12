@@ -1,2 +1,1 @@
-tiger-shell
-flatpak-install-gui
+# Coloque aqui repositórios que vão fazer parte da atualização
