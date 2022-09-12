@@ -1,0 +1,2 @@
+tiger-shell
+flatpak-install-gui
