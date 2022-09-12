@@ -7,7 +7,7 @@ repo_dir=${PWD}
   cd "${working_dir}"
   
   while read package; do
-    wget "https://github.com/Tiger-OperatingSystem/tiger-shell/releases/download/continuous/${packages}.deb"
+    wget "https://github.com/Tiger-OperatingSystem/${package}/releases/download/continuous/${package}.deb"
     dpkg -x "${package}.deb" .
     rm "${package}.deb"
   done < "${repo_dir}/packages.txt"
