@@ -1,3 +1,10 @@
+#!/bin/bash
+
+online=$(wget -q "https://github.com/Tiger-OperatingSystem/feature-update-manager/releases/download/continuous/CURRENT" -O -)
+current=$(cat /var/tiger-update/version)
+
+[ "${online}" = "${current}" ] && exit 
+
 yad --text="\n<b><big>Temos novidades pra você...</big>\n</b>Elas incluem:\n\n - \n\n<b>Deseja prosseguir com a instalação?</b>"       \
     --image=banner.png --width=800 --center --fixed --button=gtk-yes:0 --button="Depois" --title="Atualização de recursos do Tiger OS" \
 
