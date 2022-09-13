@@ -18,6 +18,8 @@ repo_dir=${PWD}
 
   tar -czvf ../update-pack.tar.gz ./*
   chmod 777 ../update-pack.tar.gz
+  
+  rm index.html
 )
 
 mv /tmp/update-pack.tar.gz tiger-update-package.tgz
