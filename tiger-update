@@ -1,1 +1,7 @@
-yad --image=banner.png --text="\n<b><big>Temos novidades pra você...</big>\n</b>Elas incluem:\n\n - \n\n<b>Deseja prosseguir com a instalação?</b>" --width=800 --center --fixed --button=gtk-yes:0 --button=gtk-no --title="Atualização de recursos do Tiger OS"
+yad --text="\n<b><big>Temos novidades pra você...</big>\n</b>Elas incluem:\n\n - \n\n<b>Deseja prosseguir com a instalação?</b>"       \
+    --image=banner.png --width=800 --center --fixed --button=gtk-yes:0 --button="Depois" --title="Atualização de recursos do Tiger OS" \
+
+[ ! "${?}" = "0" ] &&  {
+  exit
+}
+
