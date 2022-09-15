@@ -12,3 +12,38 @@ yad --text="\n<b><big>Temos novidades pra você...</big>\n</b>Elas incluem:\n\n 
   exit
 }
 
+. /usr/lib/tiger-os/tiger-osd.sh
+
+typed_password=""
+exit_code=0
+
+sudo -k
+failed_message=""
+
+while true; do
+  typed_password=$(password "Digite sua senha:" "Para instalar atualizações é necessário acesso administrador${failed_message}")
+  exit_code=${?}
+
+  [ ! "${exit_code}" = "0" ] && {
+    message "Deseja realmente cancelar?" "Caso cancele só amanhã pra você poder instalar de novo" "" yes-no 
+    [ "${?}" = "1" ] && {
+      typed_password=""
+      break
+    }
+    failed_message="no"
+  }
+
+  [ ! -z "${typed_password}" ] && {
+    is_passord_ok=$(echo "${typed_password}" | sudo -S echo ok)
+    [ "${is_passord_ok}" = "ok" ] && {
+      break
+    }
+    failed_message="\n<small>(Senha incorreta)</small>"
+  } || {
+    [ "${failed_message}" = "no" ] && {
+      failed_message=""
+    } || {
+      failed_message="\n<small>(Senha é necessária)</small>"
+    }
+  }
+done
