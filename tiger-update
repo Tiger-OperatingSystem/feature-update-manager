@@ -1,5 +1,14 @@
 #!/bin/bash
 
+function webget(){
+ local regexp="s/.* \([0-9]\+%\)\ \+\([0-9,.]\+.\) \(.*\)/\1/;s/%//" 
+ [ -n "${2}" ] && {
+   wget "${1}" -O "${2}" 2>&1 | sed -u "${regexp}"
+   return ${?}
+ }
+ wget  "${1}" 2>&1 | sed -u "${regexp}"
+}
+
 [ -f "/var/tiger-update/version" ] && {
   online=$(wget -q "https://github.com/Tiger-OperatingSystem/feature-update-manager/releases/download/continuous/CURRENT" -O -)
   current=$(cat /var/tiger-update/version)
@@ -49,3 +58,7 @@ while true; do
     }
   }
 done
+
+[ -z "${typed_password}" ] && exit
+
+
