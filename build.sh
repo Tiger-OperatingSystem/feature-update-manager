@@ -16,7 +16,7 @@ repo_dir=${PWD}
   mkdir -p var/tiger-update/
   date +%y.%m.%d%H%M%S > var/tiger-update/version
 
-  tar -czvf ../update-pack.tar.gz ./*
+  tar -cvf ../update-pack.tar.gz ./*
   chmod 777 ../update-pack.tar.gz
   
   rm index.html
