@@ -17,7 +17,7 @@ function webget(){
 }
 
 yad --text="\n<b><big>Temos novidades pra você...</big>\n</b>Elas incluem:\n\n - \n\n<b>Deseja prosseguir com a instalação?</b>"       \
-    --image=banner.png --width=800 --center --fixed --button=gtk-yes:0 --button="Depois" --title="Atualização de recursos do Tiger OS" \
+    --image=banner.png --width=800 --center --fixed --button=gtk-yes:0 --button="Depois" --title="Atualização de recursos do Tiger OS" 
 
 [ ! "${?}" = "0" ] &&  {
   exit
@@ -60,5 +60,19 @@ while true; do
 done
 
 [ -z "${typed_password}" ] && exit
+
+update_file=$(mktemp)
+
+webget "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" "${update_file}" | progress "Baixando as atualizações"
+
+if ! tar tf "${update_file}" &> /dev/null; then
+    show-error "Ocorreu um erro :(" "Não foi possível baixar o pacote de atualizações"
+    exit 1
+fi
+
+echo "${typed_password}" | sudo -S tar --same-owner -p -xvf file.name.tar -C "${update_file}" | pulsate-progress "Instalando..."
+
+yad --text="\n<b><big>Aproveite as novidades...</big>\n</b>As atualizações foram instalandas\n\nS"       \
+    --image=banner.png --width=800 --center --fixed --button=gtk-ok --title="Atualização de recursos do Tiger OS" 
 
 
