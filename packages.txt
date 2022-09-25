@@ -1,2 +1,1 @@
 # Coloque aqui repositórios que vão fazer parte da atualização
-webapp-player
