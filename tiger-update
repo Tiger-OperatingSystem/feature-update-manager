@@ -63,7 +63,7 @@ done
 
 update_file=$(mktemp)
 
-webget "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" "${update_file}" | progress "Baixando as atualizações"
+webget "https://github.com/Tiger-OperatingSystem/feature-update-manager/releases/download/continuous/tiger-update-package.tgz" "${update_file}" | progress "Baixando as atualizações"
 
 if ! tar tf "${update_file}" &> /dev/null; then
     show-error "Ocorreu um erro :(" "Não foi possível baixar o pacote de atualizações"
