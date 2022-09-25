@@ -70,7 +70,7 @@ if ! tar -tf "${update_file}" &> /dev/null; then
     exit 1
 fi
 
-echo "${typed_password}" | sudo -S tar --same-owner -p -xvf file.name.tar -C "${update_file}" | pulsate-progress "Instalando..."
+echo "${typed_password}" | sudo -S tar --same-owner -p -xvf "${update_file}" -C "${update_file}" | pulsate-progress "Instalando..."
 
 yad --text="\n<b><big>Aproveite as novidades...</big>\n</b>As atualizações foram instalandas\n\nS"       \
     --image=banner.png --width=800 --center --fixed --button=gtk-ok --title="Atualização de recursos do Tiger OS" 
