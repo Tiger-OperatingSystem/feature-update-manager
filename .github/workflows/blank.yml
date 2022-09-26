@@ -14,7 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run a one-line script
-        run: sudo -E bash build.sh
+        run: |
+          sudo -E bash build.sh
+          sudo -E bash build-package.sh
       - name: Delete last Continuous Release
         uses: dev-drprasad/delete-tag-and-release@v0.2.0
         with:
@@ -52,5 +54,14 @@ jobs:
           asset_path: ./tiger-update-package.tgz
           asset_name: tiger-update-package.tgz
           asset_content_type: application/octet-stream
-          
+      - name: Upload Release Asset
+        id: upload-tiger-update
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./feature-update-manager.deb
+          asset_name: feature-update-manager.deb
+          asset_content_type: application/octet-stream
           
