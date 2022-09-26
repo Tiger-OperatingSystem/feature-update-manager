@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /usr/lib/tiger-os/
+
 function webget(){
  local regexp="s/.* \([0-9]\+%\)\ \+\([0-9,.]\+.\) \(.*\)/\1/;s/%//" 
  [ -n "${2}" ] && {
@@ -72,9 +74,8 @@ fi
 
 (echo "${typed_password}" | sudo -S tar --same-permissions --same-owner -xvf "${update_file}" -C / ) | pulsate-progress "Instalando..."
 
-yad --text="\n<b><big>Aproveite as novidades...</big>\n</b>As atualizações foram instalandas\n\nS"       \
-    --image=banner.png --width=800 --center --fixed --button=gtk-ok --title="Atualização de recursos do Tiger OS" 
+yad --text="\n\n\n<b><big>Aproveite as novidades...</big>\n</b>As atualizações foram instaladas com sucesso\n\n" --width=800 --center --fixed --button=gtk-ok --title="Atualização de recursos do Tiger OS"  --borders=32
     
-md5sum ${update_file} 
+rm ${update_file} 
 
 
