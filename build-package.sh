@@ -12,15 +12,15 @@ HERE="$(dirname "$(readlink -f "${0}")")"
 
 working_dir=$(mktemp -d)
 
-mkdir -p "${working_dir}/usr/lib/tiger-os/"
+mkdir -p "${working_dir}/usr/bin"
 mkdir -p "${working_dir}/etc/xdg/autostart/"
 mkdir -p "${working_dir}/DEBIAN/"
 
-cp -v "${HERE}/tiger-update"         "${working_dir}/usr/lib/tiger-os/"
+cp -v "${HERE}/tiger-update"         "${working_dir}/usr/bin"
 cp -v "${HERE}/tiger-update.desktop" "${working_dir}/etc/xdg/autostart/"
 cp -v "${HERE}/banner.png"           "${working_dir}/usr/lib/tiger-os/"
 
-chmod +x "${working_dir}/usr/lib/tiger-os/tiger-update"
+chmod +x "${working_dir}/usr/bin/tiger-update"
 
 (
  echo "Package: feature-update-manager"
