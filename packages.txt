@@ -1,2 +1,3 @@
 # Coloque aqui repositórios que vão fazer parte da atualização
 tiger-shell
+curso-tiger-os
