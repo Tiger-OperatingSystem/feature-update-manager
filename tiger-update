@@ -68,12 +68,17 @@ done
 
 [ -z "${typed_password}" ] && exit
 
-update_file=$(mktemp)
+update_file=$(mktemp --dry-run)
 
 webget "https://github.com/Tiger-OperatingSystem/feature-update-manager/releases/download/continuous/tiger-update-package.tgz" "${update_file}" | progress "Baixando as atualizações"
 
-if ! tar -tf "${update_file}" &> /dev/null; then
+[ ! -f "${update_file}" ] && {
     show-error "Ocorreu um erro :(" "Não foi possível baixar o pacote de atualizações"
+    exit 1
+}
+
+if ! tar -tf "${update_file}" &> /dev/null; then
+    show-error "Ocorreu um erro :(" "Código do erro: $(md5sum ${update_file} | cut -d' ' -f1)"
     exit 1
 fi
 
