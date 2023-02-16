@@ -15,10 +15,12 @@ working_dir=$(mktemp -d)
 mkdir -p "${working_dir}/usr/bin"
 mkdir -p "${working_dir}/etc/xdg/autostart/"
 mkdir -p "${working_dir}/DEBIAN/"
+mkdir -p "${working_dir}/var/tiger-update/" 
 
 cp -v "${HERE}/tiger-update"         "${working_dir}/usr/bin"
 cp -v "${HERE}/tiger-update.desktop" "${working_dir}/etc/xdg/autostart/"
 cp -v "${HERE}/banner.png"           "${working_dir}/usr/lib/tiger-os/"
+cp -v "${HERE}/CURRENT"              "${working_dir}/var/tiger-update/version"
 
 chmod +x "${working_dir}/usr/bin/tiger-update"
 
