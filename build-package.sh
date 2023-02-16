@@ -16,6 +16,7 @@ mkdir -p "${working_dir}/usr/bin"
 mkdir -p "${working_dir}/etc/xdg/autostart/"
 mkdir -p "${working_dir}/DEBIAN/"
 mkdir -p "${working_dir}/var/tiger-update/" 
+mkdir -p "${working_dir}/usr/lib/tiger-os/"
 
 cp -v "${HERE}/tiger-update"         "${working_dir}/usr/bin"
 cp -v "${HERE}/tiger-update.desktop" "${working_dir}/etc/xdg/autostart/"
