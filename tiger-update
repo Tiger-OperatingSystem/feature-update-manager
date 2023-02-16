@@ -24,7 +24,7 @@ mensagem=$(wget -O - https://raw.githubusercontent.com/Tiger-OperatingSystem/fea
 }
 
 yad --text="\n<b><big>Temos novidades pra você...</big>\n</b>Elas incluem:\n\n${mensagem}\n\n<b>Deseja prosseguir com a instalação?</b>"       \
-    --image=banner.png --width=800 --center --fixed --button=gtk-yes:0 --button="Depois" --title="Atualização de recursos do Tiger OS" 
+    --image=/usr/lib/tiger-os/banner.png --width=800 --center --fixed --button=gtk-yes:0 --button="Depois" --title="Atualização de recursos do Tiger OS" 
 
 [ ! "${?}" = "0" ] &&  {
   exit
