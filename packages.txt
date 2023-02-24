@@ -1,5 +1,2 @@
 pop-shop-wrapper
-system-kernel_1.0.3
-system-upgrade_1.0.3
-ulauncher_5.15.1_all
 tiger-shell
