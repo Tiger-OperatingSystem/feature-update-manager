@@ -1,4 +1,1 @@
-Você está recebendo a nova versão da Central de Programas do TigerOS.
-Com isso a versão antiga será removida, mas não se preocupe, pois essa nova central é mais prática e fácil.
 
-Esperamos que goste!
