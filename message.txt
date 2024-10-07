@@ -1,1 +1,2 @@
-Está disponível uma nova versão do painel de boas-vindas, corrigindo o problema do antivírus e trocando o nome do Adobe Spark para Adobe Express.
+
+- Atualizações separadas para as séries 23 e 25
